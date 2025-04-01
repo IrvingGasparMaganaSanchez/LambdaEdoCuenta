@@ -1,17 +1,20 @@
-import puppeteer from "puppeteer"
-import handlebars from "handlebars"
-import LOG from '../commons/logger.js'
-import { generarCodigoBarrasBase64 } from './genericos/codebar.service.js'
-import { obtenerFechaHora } from './genericos/date.service.js'
 import { crearZipConPass } from './genericos/file.service.js'
-import { PLANTILLA_EDOCUENTA } from '../commons/constants.js'
-import fs from "fs/promises"
+import fs from 'fs/promises'
+import { generarCodigoBarrasBase64 } from './genericos/codebar.service.js'
+import handlebars from 'handlebars'
+import { obtenerFechaHora } from './genericos/date.service.js'
+import puppeteer from 'puppeteer'
 
-const generarPDF = async (data) => {
+import LOG from '../commons/logger.js'
+import { PLANTILLA_EDOCUENTA } from '../commons/constants.js'
+
+const generarPDF = async data => {
   let nombreArchivoZip = ''
   try {
     const templateHtml = await fs.readFile(
-      `${PLANTILLA_EDOCUENTA.PATH}${PLANTILLA_EDOCUENTA.HTML}`, "utf8")
+      `${PLANTILLA_EDOCUENTA.PATH}${PLANTILLA_EDOCUENTA.HTML}`,
+      'utf8'
+    )
 
     const imagenBase64 = await generarCodigoBarrasBase64(data.codigobarra)
     data.codebar = imagenBase64
@@ -24,12 +27,12 @@ const generarPDF = async (data) => {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
 
-    await page.setContent(finalHtml, { waitUntil: "domcontentloaded" })
+    await page.setContent(finalHtml, { waitUntil: 'domcontentloaded' })
     await page.waitForSelector('img[alt="Código de Barras"]', { visible: true })
 
     // Agregar CSS externo
-    await page.addStyleTag({ 
-      path: `${PLANTILLA_EDOCUENTA.PATH}${PLANTILLA_EDOCUENTA.CSS}` 
+    await page.addStyleTag({
+      path: `${PLANTILLA_EDOCUENTA.PATH}${PLANTILLA_EDOCUENTA.CSS}`
     })
 
     const date = obtenerFechaHora()
@@ -38,7 +41,7 @@ const generarPDF = async (data) => {
 
     await page.pdf({
       path: nombreArchivoPdf,
-      format: "A4",
+      format: 'A4',
       printBackground: true
     })
 
@@ -50,12 +53,12 @@ const generarPDF = async (data) => {
   } catch (error) {
     LOG.error('Error Lambda generarPDF')
     LOG.error(error)
-  } finally{
+  } finally {
     return nombreArchivoZip
   }
 }
 
-const borrarArchivo = async (filePath) => {
+const borrarArchivo = async filePath => {
   try {
     await fs.unlink(filePath)
     console.log(`Archivo borrado: ${filePath}`)
@@ -65,8 +68,6 @@ const borrarArchivo = async (filePath) => {
   }
 }
 
-export {
-    generarPDF
-}
+export { generarPDF }
 
 export default null

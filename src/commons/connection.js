@@ -1,14 +1,17 @@
+import { decryptEnvVar } from './decryp'
 import mongoose from 'mongoose'
+import { MS_MONGODB_CERT_PATH, MS_MONGODB_URL, TEST_EXECUTE } from './constants'
 
 import LOG from './logger'
-import { MS_MONGODB_CERT_PATH, MS_MONGODB_URL, TEST_EXECUTE } from './constants'
-import { decryptEnvVar } from './decryp'
 
 export const createConnection = async () => {
   LOG.info(`MS_MONGODB_URL: ${MS_MONGODB_URL}`)
   LOG.info(`MS_MONGODB_CERT_PATH: ${MS_MONGODB_CERT_PATH}`)
 
-  const mongoURI = TEST_EXECUTE == 'false' ? await decryptEnvVar(MS_MONGODB_URL) : MS_MONGODB_URL
+  const mongoURI =
+    TEST_EXECUTE === false
+      ? await decryptEnvVar(MS_MONGODB_URL)
+      : MS_MONGODB_URL
   mongoose.set('strictQuery', false)
 
   let options = {}

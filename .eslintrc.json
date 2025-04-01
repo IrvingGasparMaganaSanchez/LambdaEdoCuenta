@@ -5,7 +5,7 @@
       "node": true
     },
     "extends": ["prettier", "plugin:mocha/recommended"],
-    "plugins": ["prettier", "mocha"],
+    "plugins": ["prettier", "mocha", "import"],
     "globals": {
       "Atomics": "readonly",
       "SharedArrayBuffer": "readonly",
@@ -138,7 +138,7 @@
       "no-use-before-define": "off",
       // Node.js and CommonJS
       "callback-return": "off",
-      "global-require": "error",
+      "global-require": "off",
       "handle-callback-err": "error",
       "no-mixed-requires": "error",
       "no-new-require": "error",

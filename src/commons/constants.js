@@ -1,4 +1,4 @@
-import "dotenv/config";
+import 'dotenv/config'
 
 // context API
 export const {
@@ -18,12 +18,11 @@ export const PLANTILLA_EDOCUENTA = {
   PATH: './src/plantillas/',
   HTML: 'edoCuenta.html',
   CSS: 'estiloEdoCuenta.css'
-} 
+}
 
 // Data de S3
 export const {
-  env: { YOUR_AWS_REGION, BUCKETNAME, FOLDERNAME, DECRYPT_AWS_REGION
-  }
+  env: { YOUR_AWS_REGION, BUCKETNAME, FOLDERNAME, DECRYPT_AWS_REGION }
 } = process
 
 // Valores de Integracion
