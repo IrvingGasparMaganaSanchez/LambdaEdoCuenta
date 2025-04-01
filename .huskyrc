@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "post-merge": "npm install",
+    "post-rewrite": "npm install"
+  }
+}

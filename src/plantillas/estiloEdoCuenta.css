@@ -1,0 +1,299 @@
+body { 
+    font-family: "Arial Narrow", Arial, sans-serif; 
+    margin: 10px; 
+    font-size: 10px;   
+}
+
+.contenido {
+    border: 0.5px solid white; padding: 10px; width: 670px; margin: auto; 
+}
+
+.contenidoCondusef {
+    page-break-inside: avoid;
+    border: 0.5px solid  white;
+    padding: 10px; 
+    width: 670px; 
+    margin: auto; 
+    width: 670px;
+}
+
+.contenidoFinal {
+    page-break-inside: avoid;
+    border: 0.5px solid  white;
+    padding: 10px; 
+    width: 670px; 
+    margin: auto; 
+    width: 670px;
+}
+
+.titulo {
+    color: #333; font-weight: bold;  
+    font-size: 13px;
+}
+
+.cuadro {
+    width: 250px; 
+    border: 1px solid black;
+}
+
+.codebar {
+    width: 200px; 
+    height: 50px;
+    margin-top: -5px;
+}
+
+.pfgray {
+    margin-top: 0px;
+    background-color: #ddd; 
+    padding-top: 0px; 
+    padding-bottom: 5px; 
+    color: rgb(22, 22, 22); 
+    font-weight: bold;
+}
+
+.pfgray-2 {
+    width: 100%;
+    margin-top: -10px;
+    margin-left: -10px;
+    background-color: #ddd; 
+    padding-top: 0px; 
+    padding-bottom: 5px; 
+    color: rgb(22, 22, 22); 
+    font-weight: bold;
+}
+
+p {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.alCentro {
+    text-align: center;
+}
+
+.top {
+    vertical-align: top;
+}
+
+.nombre {
+    margin-top: 22px;
+    width: 50%;
+}
+
+.mleft-5 { margin-left: -5px; }
+.mleft-20 { margin-left: 30px; }
+.mleft-28 { margin-left: 38px; }
+.mtop-4 { margin-top: -4px; }
+.mbot-4 { margin-bottom: -4px; }
+.infoProducto { margin-top: 30px; font-weight: bold; }
+.alingProducto { text-align: right; padding-right: 15px; }
+
+.td10 { width: 70%; height: 50px; }
+.td11 { width: 30%; height: 50px; }
+
+.header {
+    background-color: #ddd;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 2px;
+}
+
+.info {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.info td {
+    padding: 3px;
+}
+
+.movMes td, th {
+    border: 1px solid black; /* Bordes de 1px en negro */
+    border-collapse: collapse; /* Evita doble borde entre celdas */
+}
+
+.movMes th {
+    background: #ddd;
+}
+
+.movMes {
+    width: 100%;
+    border: 1px solid black; /* Bordes de 1px en negro */
+    border-collapse: collapse; /* Evita doble borde entre celdas */
+}
+
+.movMesSumary {
+    width: 100%;
+}
+
+.movCargo td, th {
+    border: 1px solid black; /* Bordes de 1px en negro */
+    border-collapse: collapse; /* Evita doble borde entre celdas */
+}
+
+.movCargoHeader {
+    background: #ddd;
+    width: 33%; 
+    text-align: left;
+}
+
+.movCargo {
+    width: 100%;
+    border: 1px solid black; /* Bordes de 1px en negro */
+    border-collapse: collapse; /* Evita doble borde entre celdas */
+    margin-bottom: 10px;
+}
+
+.borde-1 {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.borde-2 {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    background-color: #ddd;
+}
+
+.borde-3 {
+    border: 1px solid black;
+}
+
+.borde-4 {
+    border-bottom: 1px solid black;
+}
+
+.tdDatos {
+    text-align: right;
+}
+
+.tdValorDatos {
+    text-align: left;
+}
+
+.montoDatos {
+    text-align: left; 
+    background-color: #ddd;
+}
+
+.movCargoObjetado {
+    background: #ddd;
+    width: 20%; 
+    text-align: left;
+}
+
+.caja-relativa-1 td, th {
+    border: 1px solid black; 
+    border-collapse: collapse; 
+    padding: 5px;
+}
+
+.caja-relativa-2 td, th {
+    border: 1px solid black; 
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+.caja-relativa-1 {
+    position: relative;  
+    top: 0px;       
+    left: 20px;     
+    width: 270px; 
+    border: 0.5px solid black;
+    border-spacing: 0px;
+    border-collapse: collapse; 
+}
+
+.caja-relativa-2 {
+    position: relative;  
+    top: -68px;           
+    left: 300px;       
+    width: 345px; 
+    border: 0.5px solid black;
+    border-collapse: collapse;
+    border-spacing: 0px
+}
+
+.caja-relativa-3 {
+    position: relative;  
+    top: -60px;           
+    left: 20px;       
+    width: 400px; 
+    border: 0.5px solid black;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+.caja-relativa-4 {
+    position: relative;  
+    top: -299px;           
+    left: 430px;       
+    width: 215px; 
+
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+.caja-relativa-5 {
+    position: relative;  
+    top: -127px;           
+    left: 20px;       
+    width: 400px; 
+    border-collapse: collapse;
+    border-spacing: 0px;
+    text-align: justify;
+}
+
+.caja-relativa-6 {
+    position: relative;  
+    top: -107px;           
+    left: 20px;       
+    width: 620px; 
+    border-collapse: collapse;
+    border-spacing: 0px;
+    text-align: justify;
+}
+
+.caja-relativa-7 {
+    position: relative;  
+    top: 100px;           
+    left: 20px;       
+    width: 620px;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente (si el div tiene altura) */
+}
+
+.pintarPares tr:nth-child(odd) {
+    background-color: #ddd; /* Fondo gris para filas pares */
+}
+
+.caja-relativa-4 td:nth-child(2), th:nth-child(2) {
+    background-color: #ddd;
+}
+
+.infoContacto td:nth-child(2), th:nth-child(2) {
+    background-color: #ddd;
+}
+
+.infoContacto td:nth-child(3), th:nth-child(3) {
+    background-color: #ddd;
+}
+
+.pagos {
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+.pagosceldasGray {
+    border: 0.5px solid black;
+    background: #ddd;
+    text-align: center;
+    vertical-align: top;
+}
