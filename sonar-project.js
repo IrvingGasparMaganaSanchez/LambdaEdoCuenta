@@ -1,3 +1,4 @@
+require('dotenv').config()
 const sonarqubeScanner = require('sonarqube-scanner')
 
 sonarqubeScanner(

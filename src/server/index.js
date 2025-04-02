@@ -2,6 +2,7 @@ import { generarPDF } from '../services/edoCuenta.js'
 import LOG from '../commons/logger.js'
 
 exports.handler = async (event, context) => {
+  let res = 0
   try {
     const data = {
       idCliente: '188923',
@@ -13,10 +14,10 @@ exports.handler = async (event, context) => {
     LOG.info('GenerarPdf: Iniciando Lambda GenerarPdf')
     await generarPDF(data)
     LOG.info('GenerarPdf: Finalizando Lambda GenerarPdf')
-    return 1
+    res = 1
   } catch (error) {
     LOG.error('Error Lambda GenerarPdf')
     LOG.error(error)
-    return 0
-  }
+  } 
+  return res
 }

@@ -53,9 +53,8 @@ const generarPDF = async data => {
   } catch (error) {
     LOG.error('Error Lambda generarPDF')
     LOG.error(error)
-  } finally {
-    return nombreArchivoZip
-  }
+  } 
+  return nombreArchivoZip
 }
 
 const borrarArchivo = async filePath => {
