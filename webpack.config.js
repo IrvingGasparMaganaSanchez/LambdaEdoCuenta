@@ -3,16 +3,22 @@ const path = require('path');
 module.exports = { 
   entry: './src/server/index.js', // Cambia esto a tu archivo de entrada 
   externals: [
+    '@aws-sdk/client-kms',
     '@aws-sdk/client-s3',
-    '@aws-sdk/credential-providers',
     '@newrelic/winston-enricher',
-    '@aws-sdk/client-ssm',
+    'archiver',
+    'archiver-zip-encrypted',
+    'aws-sdk',
     'axios',
+    'bwip-js',
+    'dotenv',
+    'handlebars',
     'moment-timezone',
     'mongoose',
     'newrelic',
-    'winston',
-    'uuid'
+    'puppeteer',
+    'uuid',
+    'winston'
   ],
   externalsType: 'node-commonjs',
   module: {
