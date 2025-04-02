@@ -1,0 +1,144 @@
+---
+name: Desarrollo
+
+permissions:
+  id-token: write
+  contents: read
+concurrency: dev
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+env:
+  # Service Function Lambda Name
+  SERVICE_NAME: 1775-nmp-lecturaaws-ccg
+
+  # SonarQube
+  SONAR_PROJECT_KEY: "${{secrets.SONAR_PROJECT_NAME}}"
+  SONAR_SCAN: true
+  # S3 Bucket Name
+  S3_BUCKET: nmp-observaciones-cnbv-callcenter-dev
+  # AWS Region
+  AWS_DEPLOY_REGION: us-east-1
+  
+  # AWS Lambda Name
+  AWS_LAMBDA_FUNCTION_NAME: nmp-call-center-grabaciones-lectura
+
+jobs:
+  Test:
+    name: 'Test and Linter'
+    runs-on: ubuntu-latest
+
+    steps:
+      - id: 'checkout'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: 'Información'
+        run: |
+          cat INFO.md >> "$GITHUB_STEP_SUMMARY" || echo "No hay archivo INFO.md"
+
+      - name: 'Linter Github Workflow'
+        run: |
+          bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          ./actionlint -color
+        shell: bash
+
+      - name: 'Palabras prohibidas en código'
+        run: |
+          ! grep -E 'cfenv' -rn \
+          --exclude-dir=.github \
+          --include=package.json \
+          --include=*.js \
+          .
+
+      - name: 'Install dependencies and Test'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.18.0'
+      - run: npm install
+      - run: npm test
+        env:
+          NEW_RELIC_APP_NAME: "${{vars.NEW_RELIC_APP_NAME}}"
+          NEW_RELIC_LICENSE_KEY: "${{secrets.NEW_RELIC_LICENSE_KEY}}"
+          MS_MONGODB_URL: 'mongodb://127.0.0.1:25019/e2e'
+          URL_API_CALLCENTER: 'http://local'
+          REGLASDIR: 'Proveedor: SELEG, fecha: vali.split("-"), horario: vali.split("_") Proveedor: OTRO, fecha: vali.split("-"), horario: vali.split("_")'
+          INPUTSFOLDERNAMES: 'SELEG/*OTRO/'
+          TEST_EXECUTE: 'true'
+          YOUR_AWS_REGION: 'us-east-1'
+
+      - name: 'Execute scan SonarQube'
+        if: ${{ env.SONAR_SCAN == 'true'}}
+        run: |
+          npm install -g sonarqube-scanner
+          sonar-scanner \
+            -Dsonar.projectKey="${{env.SONAR_PROJECT_KEY}}" \
+            -Dsonar.projectName="${{env.SONAR_PROJECT_KEY}}" \
+            -Dsonar.host.url="${{secrets.SONARQUBE_HOST }}" \
+            -Dsonar.sources=src \
+            -Dsonar.login="${{secrets.SONARQUBE_TOKEN}}" \
+            -Dsonar.exclusions=src/test/**.js, \
+            -Dsonar.coverage.exclusions=src/__test__/**/*.js,src/main.js,src/newrelic.interceptor.js,src/newrelic.js,src/jest.setup.js,src/__test__/**/*.js,src/__mocks__/**/*.js
+
+      # Check the Quality Gate status.
+      - name: 'SonarQube Quality Gate check'
+        if: ${{ env.SONAR_SCAN == 'true'}}
+        id: sonarqube-quality-gate-check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{secrets.SONARQUBE_TOKEN}}
+          SONAR_HOST_URL: ${{secrets.SONARQUBE_HOST }}
+
+  Deploy:
+    needs: Test
+    name: 'Build, Package Zip and Deploy'
+    runs-on:
+      - ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Use Node.js 20.18.1"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.18.1'
+      - run: npm install --only=production
+      - run: npm run build
+
+      # Package Lambda code into a zip file
+      - name: 'Create Zip'
+        id: 'craete_zip'
+        run: |
+          mkdir -p ${{ env.SERVICE_NAME }}
+          mv node_modules ${{ env.SERVICE_NAME }}/
+          mv dist/index.js ${{ env.SERVICE_NAME }}/
+          cd ${{ env.SERVICE_NAME }}/
+          zip -r ../${{ env.SERVICE_NAME }}-${{ github.sha }}.zip .
+          cd ..
+          echo "Se crea paquete ZIP ${{ env.SERVICE_NAME }}-${{ github.sha }}.zip"
+          echo "package_name=${{ env.SERVICE_NAME }}-${{ github.sha }}.zip" >> "$GITHUB_OUTPUT"
+
+      # Autenticar en AWS sin utilizar secretos
+      - name: 'Configure AWS Deploy Role'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ env.AWS_DEPLOY_REGION }}
+          role-to-assume: arn:aws:iam::${{ secrets.DEV_AWS_ACCOUNT_ID }}:role/github-actions-deploy-role
+          role-session-name: ${{ github.event.repository.name }}-Deploy
+
+      # Upload Zip on S3
+      - name: 'Upload to S3'
+        run: aws s3 cp ${{ steps.craete_zip.outputs.package_name }} s3://${{ env.S3_BUCKET }}/function/
+
+      - name: 'Update lambda function'
+        run: |
+          aws lambda update-function-code \
+            --function-name=${{ env.AWS_LAMBDA_FUNCTION_NAME }} \
+            --s3-bucket=${{ env.S3_BUCKET }} \
+            --s3-key=function/${{ steps.craete_zip.outputs.package_name }} \
+            --cli-read-timeout 60 \
+            --cli-connect-timeout 60
