@@ -2,6 +2,7 @@ import { crearZipConPass } from './genericos/file.service.js'
 import fs from 'fs/promises'
 import { generarCodigoBarrasBase64 } from './genericos/codebar.service.js'
 import handlebars from 'handlebars'
+import { insertEdoCta } from '../models/collecionEdoCta.js'
 import { obtenerFechaHora } from './genericos/date.service.js'
 import puppeteer from 'puppeteer'
 
@@ -39,6 +40,14 @@ const generarPDF = async data => {
     const nombreArchivoPdf = `${data.idContrato}${data.idCliente}EC${date}.pdf`
     nombreArchivoZip = `${data.idContrato}${data.idCliente}EC${date}.zip`
 
+    const reg = {
+      idContrato: data.idContrato,
+      idCliente: data.idCliente,
+      nombreArchivo: nombreArchivoZip
+    }
+
+    await insertEdoCta([reg])
+
     await page.pdf({
       path: nombreArchivoPdf,
       format: 'A4',
@@ -46,7 +55,7 @@ const generarPDF = async data => {
     })
 
     await crearZipConPass(nombreArchivoZip, nombreArchivoPdf, data.RFC)
-    //await borrarArchivo(nombreArchivoPdf)
+    await borrarArchivo(nombreArchivoPdf)
 
     await browser.close()
     LOG.info(`PDF generado correctamente`)

@@ -1,7 +1,7 @@
-import { DECRYPT_AWS_REGION, VALUE_KMS } from './constants'
+import { DECRYPT_AWS_REGION, VALUE_KMS } from './constants.js'
 import { DecryptCommand, KMSClient } from '@aws-sdk/client-kms'
 
-import LOG from './logger'
+import LOG from './logger.js'
 
 const client = new KMSClient({ region: DECRYPT_AWS_REGION })
 export const decryptEnvVar = async valor => {

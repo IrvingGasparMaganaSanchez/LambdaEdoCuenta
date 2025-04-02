@@ -20,6 +20,11 @@ export const PLANTILLA_EDOCUENTA = {
   CSS: 'estiloEdoCuenta.css'
 }
 
+// Env By Organizacion
+export const {
+  env: { NAME_ORGANIZACION, VALUE_KMS }
+} = process
+
 // Data de S3
 export const {
   env: { YOUR_AWS_REGION, BUCKETNAME, FOLDERNAME, DECRYPT_AWS_REGION }

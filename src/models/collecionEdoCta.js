@@ -10,8 +10,8 @@ const insertEdoCta = async data => {
     const coneMongo = await createConnection()
     const insert = await coneMongo.connection.db.collection(COLLECTION_NAME)
     const dataMongo = await insert.insertMany(data)
-    LOG.info('Models: Finalizando el método insertEdoCta')
     res = dataMongo.insertedCount
+    LOG.info(`Models: Finalizando el método insertEdoCta ${res}`)
   } catch (error) {
     LOG.error('Error Models insertEdoCta')
     LOG.error(error)

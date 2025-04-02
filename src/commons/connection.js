@@ -1,4 +1,4 @@
-import { decryptEnvVar } from './decryp'
+//import { decryptEnvVar } from './decryp'
 import mongoose from 'mongoose'
 import { MS_MONGODB_CERT_PATH, MS_MONGODB_URL, TEST_EXECUTE } from './constants'
 
@@ -19,7 +19,7 @@ export const createConnection = async () => {
   if (MS_MONGODB_CERT_PATH) {
     //parsear el base64
     options = {
-      tls: true,
+      tls: !(TEST_EXECUTE === 'true'),
       tlsCAFile: MS_MONGODB_CERT_PATH
     }
   }
@@ -33,6 +33,7 @@ export const createConnection = async () => {
     connection.on('error', error => {
       LOG.error(`Error de conexión a mongodb: ${error}`)
     })
+
     connection.once('open', () => LOG.info('Connection Successful'))
   }
 
