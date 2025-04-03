@@ -7,19 +7,39 @@ import { obtenerFechaHora } from './genericos/date.service.js'
 import puppeteer from 'puppeteer'
 
 import LOG from '../commons/logger.js'
-import { PLANTILLA_EDOCUENTA } from '../commons/constants.js'
+import { TEMPLATE_AVISO_PRIVACIDAD, PLANTILLA_EDOCUENTA  } from '../commons/constants.js'
 
 const generarPDF = async data => {
   let nombreArchivoZip = ''
   try {
-    const templateHtml = await fs.readFile(
+    let templateHtml = await fs.readFile(
       `${PLANTILLA_EDOCUENTA.PATH}${PLANTILLA_EDOCUENTA.HTML}`,
       'utf8'
     )
 
     const imagenBase64 = await generarCodigoBarrasBase64(data.codigobarra)
     data.codebar = imagenBase64
+    data.avisoPrivacidad = reemplazarValores(TEMPLATE_AVISO_PRIVACIDAD, data);
 
+    let tableMovimientos = createTableHtml(data.movimientos);
+    let tableAbonosCapital = createTableHtml(data.abonosCapital);
+    let tableComisiones = createTableHtml(data.comisiones, true);
+    let tableRetenciones = createTableHtml(data.retenciones, true);
+    let tableCargosObjetados = createTableHtml(data.cargosObjetados);
+    let tableAbreviaturas = createTableHtml(data.abreviaturas);
+    let mediosDePagos = createTableHtml(data.mediosDePagos);
+
+    templateHtml = reemplazarValores(templateHtml, 
+      { 
+        tableMovimientos, 
+        tableAbonosCapital, 
+        tableComisiones, 
+        tableRetenciones, 
+        tableCargosObjetados,
+        tableAbreviaturas,
+        mediosDePagos
+      });
+    
     LOG.info(`codebar: ${data.codebar}`)
 
     const template = handlebars.compile(templateHtml)
@@ -55,7 +75,7 @@ const generarPDF = async data => {
     })
 
     await crearZipConPass(nombreArchivoZip, nombreArchivoPdf, data.RFC)
-    await borrarArchivo(nombreArchivoPdf)
+    //await borrarArchivo(nombreArchivoPdf)
 
     await browser.close()
     LOG.info(`PDF generado correctamente`)
@@ -65,6 +85,28 @@ const generarPDF = async data => {
   } 
   return nombreArchivoZip
 }
+
+const createTableHtml= (array, addColumEmpty) => {
+  let html = ''
+  array.forEach(item => {
+    html += '<tr>'
+    for (let key in item) {
+      if (item.hasOwnProperty(key)) {
+         html += '<td>'
+         html += item[key]
+         html += '</td>'
+      }
+    }
+    if(addColumEmpty) html += '<td></td>'
+    html += '</tr>'
+  })
+  console.log(`html Final: ${html}`)
+  return html
+}
+
+const reemplazarValores = (cadena, valores) => {
+  return cadena.replace(/{{(.*?)}}/g, (_, clave) => valores[clave.trim()] || `{{${clave.trim()}}}`);
+};
 
 const borrarArchivo = async filePath => {
   try {

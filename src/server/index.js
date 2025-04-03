@@ -1,23 +1,24 @@
-import { generarPDF } from '../services/edoCuenta.js'
 import LOG from '../commons/logger.js'
 
 exports.handler = async (event, context) => {
-  let res = 0
   try {
-    const data = {
-      idCliente: '188923',
-      idContrato: '1001',
-      RFC: 'MASI890105',
-      codigobarra: '000010000760160423'
-    }
-
-    LOG.info('GenerarPdf: Iniciando Lambda GenerarPdf')
-    await generarPDF(data)
-    LOG.info('GenerarPdf: Finalizando Lambda GenerarPdf')
-    res = 1
+      LOG.info('LAMBDA: Iniciando Lambda EtdoCuenta')
+      const expr = event.accion;
+      const data = event.body
+      switch (expr) {
+          case 'encolar':
+              LOG.info('LAMBDA: Iniciando Acción - Encolar')
+              return 0
+          case 'desencolar':
+              LOG.info('LAMBDA: Iniciando Acción - Desencolar')
+              return 0
+          default:
+              LOG.info('LAMBDA: EtdoCuenta, se necesita una acción para ejecutar')
+              return 1
+      }
   } catch (error) {
-    LOG.error('Error Lambda GenerarPdf')
-    LOG.error(error)
-  } 
-  return res
+      LOG.error('Error en la Lambda EtdoCuenta')
+      LOG.error(error)
+      return 0
+  }
 }

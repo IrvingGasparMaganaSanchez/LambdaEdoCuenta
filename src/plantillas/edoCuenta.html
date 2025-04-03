@@ -14,18 +14,13 @@
                     <table aria-hidden="true">
                         <tr>
                             <td>
-                                <p class="titulo">FINANCIERA MONTE DE PIEDAD, S.A. DE C.V. , S.F.P.</p>
+                                <p class="titulo">{{nombreEmpresa}}</p>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="mleft-20">
-                                    <p class="nombre">
-                                    MARIANA REYES RODRIGUEZ
-                                    RUIZ CORTINES 30 SN
-                                    ARGENTINA PONIENTE
-                                    MIGUEL HIDALGO, CDMX
-                                    </p>
+                                    <p class="nombre">{{nombre}} {{direccion}}</p>
                                 </div>
                             </td>
                         </tr>
@@ -34,9 +29,9 @@
                                 <div class="mleft-20">
                                     <table class="mleft-5 mbot-4" aria-hidden="true">
                                         <tr>
-                                            <td><p class="mtop-4">C.P. 11230</p></td>
-                                            <td><p class="mtop-4">Mens.: CEN</p></td>
-                                            <td><p class="mtop-4">Fol.: 00001</p></td></tr>
+                                            <td><p class="mtop-4">C.P. {{codigoPostal}}</p></td>
+                                            <td><p class="mtop-4">Mens.: {{mens}}</p></td>
+                                            <td><p class="mtop-4">Fol.: {{folio}}</p></td></tr>
                                     </table>
                                 </div>
                              </td>
@@ -51,7 +46,7 @@
                         <tr>
                             <td>
                                 <div class="mleft-20">
-                                    <p class="mtop-4">000010000760160423</p>
+                                    <p class="mtop-4">{{codigobarra}}</p>
                                 </div>
                             </td>
                         </tr>
@@ -63,10 +58,9 @@
                             <td>
                                 <div class="cuadro">
                                     <p class="pfgray alCentro">DATOS DE LA EMPRESA</p>
-                                    <p class="alCentro"> Calle Monte de Piedad Número 7 , Colonia Centro,
-                                        Alcaldía Cuauhtémoc, C.P. 06000, Ciudad de México</p>
-                                    <p class="alCentro"><b>Teléfono (55) 5269 5201</b></p>
-                                    <p class="alCentro"><b>SIN COSTO PARA TI EN TODA LA REPUBLICA</b></p>
+                                    <p class="alCentro">{{direccionEmpresa}}</p>
+                                    <p class="alCentro"><b>Teléfono {{telefono}}</b></p>
+                                    <p class="alCentro"><b>{{mensajeTelefono}}</b></p>
                                 </div>
                             </td>
                         </tr>
@@ -75,19 +69,19 @@
                                 <table class="infoProducto" aria-hidden="true">
                                     <tr>
                                         <td class="alingProducto">Producto</td>
-                                        <td>LANAVE</td>
+                                        <td>{{producto}}</td>
                                     </tr>
                                     <tr>
                                         <td class="alingProducto">No. de Contrato</td>
-                                        <td>0000200000760</td>
+                                        <td>{{idContrato}}</td>
                                     </tr>
                                     <tr>
                                         <td class="alingProducto">No. de Cliente</td>
-                                        <td>1804942916</td>
+                                        <td>{{idCliente}}</td>
                                     </tr>
                                     <tr>
                                         <td class="alingProducto">RFC</td>
-                                        <td>RERM910408PP7</td>
+                                        <td>{{RFC}}</td>
                                     </tr>
                                 </table>
                             </td>
@@ -101,39 +95,39 @@
                     <table class="info" aria-hidden="true">
                         <tr>
                             <td class="tdDatos">Monto del crédito / Saldo inicial</td>
-                            <td class="tdValorDatos">$ 100,000.00</td>
+                            <td class="tdValorDatos">$ {{saldoInicial}}</td>
                             <td class="tdDatos">Saldo Insoluto</td>
-                            <td class="tdValorDatos">$ 100,000.00</td>
+                            <td class="tdValorDatos">$ {{saldoInsoluto}}</td>
                         </tr>
                         <tr>
                             <td class="tdDatos"><b>Tasa de Interés Ordinaria sin I.V.A. anual</b></td>
-                            <td class="tdValorDatos"><b>48.00%</b></td>
+                            <td class="tdValorDatos"><b>{{tasaInteresOrdinarioSinIvaAnual}}%</b></td>
                             <td class="tdDatos">Fecha de Apertura</td>
-                            <td class="tdValorDatos">03-ABR-2021</td>
+                            <td class="tdValorDatos">{{fechaApertura}}</td>
                         </tr>
                         <tr>
                             <td class="tdDatos"><b>Tasa de Interés Moratoria sin I.V.A. anual</b></td>
-                            <td class="tdValorDatos"><b>144.00%</b></td>
+                            <td class="tdValorDatos"><b>{{tasaInteresMoratorioSinIvaAnual}}%</b></td>
                             <td class="tdDatos">Fecha de Vencimiento</td>
-                            <td class="tdValorDatos">03-JUN-2023</td>
+                            <td class="tdValorDatos">{{fechaVencimiento}}</td>
                         </tr>
                         <tr>
                             <td class="tdDatos">Comisión por apertura con I.V.A</td>
-                            <td class="tdValorDatos">$ 0.00</td>
+                            <td class="tdValorDatos">$ {{comisionPorAperturaConIva}}</td>
                             <td class="tdDatos">Fecha Límite de Pago</td>
-                            <td class="tdValorDatos">03-MAY-2022</td>
+                            <td class="tdValorDatos">{{fechaLimitePago}}</td>
                         </tr>
                         <tr>
                             <td class="tdDatos"><b>C.A.T. Promedio</b></td>
-                            <td class="tdValorDatos"><b>59.90% sin I.V.A.</b></td>
+                            <td class="tdValorDatos"><b>{{catPromedio}}% sin I.V.A.</b></td>
                             <td class="tdDatos">Pagos Restantes</td>
-                            <td class="tdValorDatos borde-1">14</td>
+                            <td class="tdValorDatos borde-1">{{pagosRestantes}}</td>
                         </tr>
                         <tr>
                             <td class="montoDatos"><b>Monto a pagar en el periodo</b></td>
-                            <td class="tdValorDatos"><b>$ 0.00</b></td>
+                            <td class="tdValorDatos"><b>$ {{montoPagarEnPeriodo}}</b></td>
                             <td class="tdDatos"></td>
-                            <td class="tdValorDatos borde-2">$ 4,640.00</td>
+                            <td class="tdValorDatos borde-2">$ {{saldoRestante}}</td>
                         </tr>
                     </table>
                 </td>
@@ -141,22 +135,20 @@
             <tr>
                 <td colspan="3">
                     <div class="header">MOVIMIENTOS DEL MES</div>
-                    <table class="movMes" aria-hidden="true">
+                    <table class="movMes alignCenterColumnMovimientos" aria-hidden="true">
                         <tr>
                             <th style="text-align: left; width: 20%;">Fecha</th>
                             <th style="text-align: left; width: 40%;">Descripción</th>
                             <th tyle="width: 20%;">Cargo</th>
                             <th tyle="width: 20%;">Abono</th>
                         </tr>
-                        <tr>
-                            
-                        </tr>
+                        {{tableMovimientos}}
                     </table>
                     <table class="movMesSumary" aria-hidden="true">
                         <tr>
                             <td colspan="2" style="text-align: right; width: 60%; font-weight: bold;" >Total</td>
-                            <td style="text-align: center; width: 20%; font-weight: bold;">$ 51,040.00</td>
-                            <td style="text-align: center; width: 20%; font-weight: bold;">$ 51,040.00</td>
+                            <td style="text-align: center; width: 20%; font-weight: bold;">$ {{totalMovCargos}}</td>
+                            <td style="text-align: center; width: 20%; font-weight: bold;">$ {{totalMovAbonos}}</td>
                         </tr>
                     </table>
                 </td>
@@ -164,48 +156,42 @@
             <tr>
                 <td colspan="3">
                     <div class="header">ABONO A CAPITAL</div>
-                    <table class="movCargo" aria-hidden="true">
+                    <table class="movCargo alignCenterColumnAbonoCapital" aria-hidden="true">
                         <tr>
-                            <td class="movCargoHeader">Saldo insoluto anterior:</td>
-                            <td class="movCargoHeader">Abono a capital:</td>
-                            <td class="movCargoHeader">Saldo insoluto actual:</td>
+                            <th class="movCargoHeader">Saldo insoluto anterior:</th>
+                            <th class="movCargoHeader">Abono a capital:</th>
+                            <th class="movCargoHeader">Saldo insoluto actual:</th>
                         </tr>
-                        <tr>
-                            
-                        </tr>
+                        {{tableAbonosCapital}}
                     </table>
                 </td>
             </tr>
             <tr>
                 <td colspan="3">
                     <div class="header">COMISIONES</div>
-                    <table class="movCargo" aria-hidden="true">
+                    <table class="movCargo alignCenterColumnComisiones" aria-hidden="true">
                         <tr>
-                            <td class="movCargoHeader">Descripción</td>
-                            <td class="movCargoHeader">Importe</td>
-                            <td class="movCargoHeader"></td>
+                            <th class="movCargoHeader">Descripción</th>
+                            <th class="movCargoHeader">Importe</th>
+                            <th class="movCargoHeader"></th>
                         </tr>
-                        <tr>
-                            
-                        </tr>
+                        {{tableComisiones}}
                     </table>
                 </td>
             </tr>
             <tr>
                 <td colspan="3">
                     <div class="header">RETENCIONES</div>
-                    <table class="movCargo" aria-hidden="true">
+                    <table class="movCargo alignCenterColumnRetenciones" aria-hidden="true">
                         <tr>
-                            <td class="movCargoHeader">Descripción</td>
-                            <td class="movCargoHeader">Importe</td>
-                            <td class="movCargoHeader"></td>
+                            <th class="movCargoHeader">Descripción</th>
+                            <th class="movCargoHeader">Importe</th>
+                            <th class="movCargoHeader"></th>
                         </tr>
-                        <tr>
-                            
-                        </tr>
+                        {{tableRetenciones}}
                         <tr>
                             <td style="text-align: right; font-weight: bold;">Total Retenciones en el período</td>
-                            <td style="text-align: center; font-weight: bold;">$7,040.00</td>
+                            <td style="text-align: center; font-weight: bold;">{{totalRetenciones}}</td>
                         </tr>
                     </table>
                 </td>
@@ -213,17 +199,15 @@
             <tr>
                 <td colspan="3">
                     <div class="header">CARGOS OBJETADOS</div>
-                    <table class="movCargo" aria-hidden="true">
+                    <table class="movCargo alignCenterColumnCargosObjetados" aria-hidden="true">
                         <tr>
-                            <td class="movCargoObjetado">Fecha de objeción</td>
-                            <td class="movCargoObjetado">Monto</td>
-                            <td class="movCargoObjetado">Comentarios de objeción</td>
-                            <td class="movCargoObjetado">Estatus de Procedencia</td>
-                            <td class="movCargoObjetado">Procedencia</td>
+                            <th class="movCargoObjetado">Fecha de objeción</th>
+                            <th class="movCargoObjetado">Monto</th>
+                            <th class="movCargoObjetado">Comentarios de objeción</th>
+                            <th class="movCargoObjetado">Estatus de Procedencia</th>
+                            <th class="movCargoObjetado">Procedencia</th>
                         </tr>
-                        <tr>
-
-                        </tr>
+                        {{tableCargosObjetados}}
                     </table>
                 </td>
             </tr>
@@ -232,12 +216,12 @@
                     <table class="info" aria-hidden="true">
                         <tr>
                             <td  style="text-align: left; width: 25%; padding-left: 15px;">Comisiones cobradas en el periodo</td>
-                            <td  class="borde-3" style="text-align: left; width: 25%;">$ 0.00</td>
+                            <td  class="borde-3" style="text-align: left; width: 25%;">$ {{comisionesCobradasPeriodo}}</td>
                             <td  style="text-align: left; width: 50%;"></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; padding-left: 15px;">Cargos Efectuados en el Periodo</td>
-                            <td class="borde-3" >$ 51,040.00</td>
+                            <td class="borde-3" >$ {{cargosEfectuadosPeriodo}}</td>
                         </tr>
                     </table>
                 </td>
@@ -248,23 +232,23 @@
                     <table class="info" aria-hidden="true">
                         <tr>
                             <td  style="text-align: left; width: 25%; padding-left: 15px;">Saldo Anterior</td>
-                            <td  style="text-align: right; width: 25%;">$ 100,000.00</td>
+                            <td  style="text-align: right; width: 25%;">$ {{saldoAnterior}}</td>
                             <td  style="text-align: left; width: 25%;"></td>
                             <td  style="text-align: left; width: 25%;"></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; padding-left: 15px;">Depósito / Abonos (+)</td>
-                            <td style="text-align: right;">$ 51,040.00</td>
+                            <td style="text-align: right;">$ {{depositos}}</td>
                         </tr>
                         <tr>
                             <td style="text-align: left; padding-left: 15px;">Retiros / Cargos (-)</td>
-                            <td class="borde-4" style="text-align: right;">$ 51,040.00</td>
+                            <td class="borde-4" style="text-align: right;">$ {{retiros}}</td>
                         </tr>
                         <tr>
                             <td style="text-align: left; padding-left: 15px;">Saldo Final</td>
-                            <td style="text-align: right;">$ 100,000.00</td>
+                            <td style="text-align: right;">$ {{saldoFinal}}</td>
                             <td style="text-align: right;">Movimientos Pendientes</td>
-                            <td class="borde-3" style="text-align: center;"> $ 0.00</td>
+                            <td class="borde-3" style="text-align: center;"> $ {{movimientosPendientes}}</td>
                         </tr>
                     </table>
                 </td>
@@ -278,21 +262,17 @@
         <table class="caja-relativa-1" aria-hidden="true">
             <tr class="pfgray-2"><th>CONDUSEF</th></tr>
             <tr>
-                <td>
-                    COMISIÓN NACIONAL PARA LA PROTECCIÓN Y DEFENSA DE
-                    LOS USUARIOS DE SERVICIOS FINANCIEROS (CONDUSEF). TEL:
-                    (55)53 400999 Y 01(800)9998080, www.condusef.gob.mx
-                </td>
+                <td>{{conducefAviso_1}}</td>
             </tr>
         </table>
 
         <table class="caja-relativa-2" aria-hidden="true">
             <tr class="pfgray-2"><th>CONDUSEF</th></tr>
             <tr>
-                <td>"CONTRATAR CRÉDITOS QUE EXCEDAN TU CAPACIDAD DE PAGO AFECTA TU HISTORIAL CREDITICIO"</td>
+                <td>{{conducefAviso_2}}</td>
             </tr>
-            <tr><td>"INCUMPLIR EN TUS OBLIGACIONES TE PUEDE GENERAR COMISIONES E INTERESES MORATORIOS"</td></tr>
-            <tr><td>"EL AVALISTA, OBLIGADO SOLIDARIO O COACREDITADO RESPONDERÁ COMO OBLIGADO PRINCIPAL POR EL TOTAL DEL PAGO FRENTE A LA INSTITUCIÓN FINANCIERA"</td></tr>
+            <tr><td>{{conducefAviso_3}}</td></tr>
+            <tr><td>{{conducefAviso_4}}</td></tr>
         </table>
 
         <table class="caja-relativa-3" aria-hidden="true">
@@ -300,17 +280,17 @@
             <tr>
                 <td style="padding-left: 5px;">CENTRO DE ATENCIÓN TELÉFONICA</td>
                 <td>
-                    <p style="margin: 5px; border: 1px solid #1a1919; background: #ddd;">(55) 5269 5201 SIN COSTO PARA TI EN TODA LA REPUBLICA</p>
+                    <p style="margin: 5px; border: 1px solid #1a1919; background: #ddd;">{{telefono}} {{mensajeTelefono}}</p>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <p style="padding-left: 35px;">> Atención telefónica de lunes a sábado de 08:00 a 20:00hrs</p>
+                    <p style="padding-left: 35px;">{{horarioAtencion}}</p>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <p style="padding-left: 35px;">> Información de producto</p>
+                    <p style="padding-left: 35px;">{{infoPoducto}}</p>
                 </td>
             </tr>
             <tr>
@@ -324,23 +304,23 @@
                     <table class="infoContacto" style="border-spacing: 0px;" aria-hidden="true">
                         <tr>
                             <td>Teléfonos</td>
-                            <td style="text-align: center; padding: 5px;">(55) 5269 5201</td>
-                            <td style="text-align: center; padding: 5px; border-left: 3px solid white;">SIN COSTO PARA TI EN TODA LA REPUBLICA</td>
+                            <td style="text-align: center; padding: 5px;">{{telefono}}</td>
+                            <td style="text-align: center; padding: 5px; border-left: 3px solid white;">{{mensajeTelefono}}</td>
                         </tr>
                         <tr>
                             <td >E-mail</td>
-                            <td style="background: #ddd; text-align: center; padding: 5px;">une@financieramontedepiedad.com.mx</td>
+                            <td style="background: #ddd; text-align: center; padding: 5px;">{{emailContacto}}</td>
                         </tr>
                         <tr>
                             <td>Dirección</td>
-                            <td style="background: #ddd; text-align: center; padding: 5px;">AMBERES 45 PISO 3, COLONIA JUÁREZ, C.P. 06600,ALCALDÍA CUAUHTÉMOC ,CIUDAD DE MÉXICO</td>
+                            <td style="background: #ddd; text-align: center; padding: 5px;">{{direccionContacto}}</td>
                         </tr>
                     </table>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <p style="text-align: center;">Cualquier aclaración o inconformidad deberá presentarla dentro de los 90 días siguientes al corte de su estado de cuenta, en caso contrario se dará por aceptado.</p>
+                    <p style="text-align: center;">{{aclaracion}}</p>
                 </td>
             </tr>
         </table>
@@ -349,36 +329,15 @@
             <tr class="pfgray-2">
                 <th colspan="2">ABREVIATURAS</th>
             </tr>
-            <tr>
-                <td>CAT</td>
-                <td>Costo Anual Total</td>
-            </tr>
-            <tr>
-                <td>CLABE</td>
-                <td>Clave Bancaria Estandarizada</td>
-            </tr>
-            <tr>
-                <td>I.V.A.</td>
-                <td>Impuesto al Valor Agregado</td>
-            </tr>
-            <tr>
-                <td>RFC</td>
-                <td>Registro Federal de Contribuyentes</td>
-            </tr>
+            {{tableAbreviaturas}}
         </table>
 
         <table class="caja-relativa-5" aria-hidden="true">
             <tr class="pfgray-2">
-                <th colspan="2" style="text-align: center"> LE INVITAMOS A CONOCER NUESTRO AVISO DE PRIVACIDAD EN <br>www.financieramontedepiedad.com.mx</th>
+                <th colspan="2" style="text-align: center">{{invitacionPrivacidad}}</th>
             </tr>
             <tr>
-                <td style="padding-top: 10px;">FINANCIERA MONTE DE PIEDAD, S.A. DE C.V. , S.F.P., recibe las consultas, reclamaciones o aclaraciones, en su
-                    Unidad Especializada de Atención a Usuarios, ubicada en Amberes número 45, Piso 3, Cuauhtémoc, C.P. 06600,
-                    Ciudad de México y por correo electrónico (une@financieramontedepiedad.com.mx) o teléfono (para la Ciudad de
-                    México y Zona Metropolitana 5269 5202 y para el interior de la República 01 800 021 0683), asi como en
-                    cualquier de sus sucursales u oficinas. En el caso de no obtener una respuesta satisfactoria, podrá acudir a la
-                    Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros www.condusef.gob.mx.
-                    y teléfonos 53 400 999 o 01 800 999 80 80.</td>
+                <td style="padding-top: 10px;">{{avisoPrivacidad}}</td>
             </tr>
         </table>
 
@@ -387,20 +346,16 @@
                 <th colspan="2" style="text-align: center">PAGOS</th>
             </tr>
             <tr>
-                <td>
-                    ESTIMADO CLIENTE, LE RECORDAMOS QUE SU PAGO DEBERÁ REALIZARLO EN EFECTIVO, CHEQUE O TRANSFERENCIA ELECTRÓNICA A TRAVES DE
-                    LOS SIGUIENTES DATOS<br>La base para el cálculo del interés ordinario y moratorio, será el saldo insoluto.<br>
-                    Cuando la fecha de pago corresponda a un día inhábil bancario, el pago podrá realizarse sin cargo adicional al siguiente día hábil bancario.
-                </td>
+                <td>{{pagoMensaje_1}}<br>{{pagoMensaje_2}}<br>{{pagoMensaje_3}}</td>
             </tr>
             <tr>
-                <td style="padding-top: 10px;"><b>Cuenta Única Personal de Pagos (CLABE STP): 646010288000023981</b></td>
+                <td style="padding-top: 10px;"><b>Cuenta Única Personal de Pagos (CLABE STP): {{clabeSTP}}</b></td>
             </tr>
             <tr>
                 <td>
                     <table class="pagos" aria-hidden="true">
                         <tr>
-                            <td colspan="2"><b>BANAMEX</b></td>
+                            <td colspan="2"><b>{{{transferenciaBancoEmisor}}}</b></td>
                             <td></td>
                             <td colspan="2"><b>TRANSFERENCIA</b></td>
                         </tr>
@@ -408,43 +363,43 @@
                             <td colspan="2" style="padding-top: 5px;"><b>FMP WSDS</b></td>
                             <td></td>
                             <td>CUENTA CLABE</td>
-                            <td class="pagosceldasGray">002180701446520947</td>
+                            <td class="pagosceldasGray">{{transferenciaCuentaClabe}}</td>
                         </tr>
                         <tr>
                             <td style="width: 23%;">REFERENCIA ALFANUMÉRICA:</td>
-                            <td class="pagosceldasGray" style="width: 23%;">20000076089</td>
+                            <td class="pagosceldasGray" style="width: 23%;">{{fmpReferencia}}</td>
                             <td  style="width: 5%;"></td>
-                            <td style="width: 23%;">BANCO EMISOR BANAMEX</td>
-                            <td class="pagosceldasGray" style="width: 23%;">BANAMEX</td>
+                            <td style="width: 23%;">BANCO EMISOR {{transferenciaBancoEmisor}}</td>
+                            <td class="pagosceldasGray" style="width: 23%;">{{transferenciaBancoEmisor}}</td>
                         </tr>
                         <tr>
                             <td>SERVICIO</td>
-                            <td class="pagosceldasGray">WS4468</td>
+                            <td class="pagosceldasGray">{{fmpServicio}}</td>
                             <td></td>
                             <td>BANCO BENEFICIARIO</td>
-                            <td class="pagosceldasGray">XABIER FARAH UBICO</td>
+                            <td class="pagosceldasGray">{{beneficiario}}</td>
                         </tr>
                         <tr>
                             <td colspan="2"><b>DEPÓSITO EN VENTANILLA</b></td>
                             <td></td>
                             <td>REFERENCIA ALFANUMÉRICA:<br> CUENTA CONCENTRADORA<br>REFERENCIA</td>
-                            <td class="pagosceldasGray">0000020000076089</td>
+                            <td class="pagosceldasGray">{{referencia}}</td>
                         </tr>
                         <tr>
                             <td>SUCURSAL</td>
-                            <td class="pagosceldasGray">7014</td>
+                            <td class="pagosceldasGray">{{depositoSucursal}}</td>
                         </tr>
                         <tr>
-                            <td>NÚMERO DE CUENTA BANAMEX</td>
-                            <td class="pagosceldasGray">4652094</td>
+                            <td>NÚMERO DE CUENTA {{transferenciaBancoEmisor}}</td>
+                            <td class="pagosceldasGray">{{depositoNumeroCuenta}}</td>
                         </tr>
                         <tr>
                             <td>REFERENCIA ALFANUMÉRICA:</td>
-                            <td class="pagosceldasGray">0000020000076089</td>
+                            <td class="pagosceldasGray">{{referencia}}</td>
                         </tr>
                         <tr>
                             <td>BENEFICIARIO</td>
-                            <td class="pagosceldasGray">XABIER FARAH UBICO</td>
+                            <td class="pagosceldasGray">{{beneficiario}}</td>
                         </tr>
                     </table>
                 </td>
@@ -459,56 +414,18 @@
                 <tr>
                     <td>
                         <p style="text-align: center;">MEDIO DE PAGO DE ACUERDO A LA RESOLUCIÓN MISCELÁNEA VIGENTE A PARTIR DEL 15 DE JULIO DE 2016.</p>
-                        <p style="text-align: center;">CATÁLOGO DE MEDIOS DE PAGO</p>
+                        <br>
+                        <p style="text-align: center;"><b>CATÁLOGO DE MEDIOS DE PAGO</b></p>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <table  class="pintarPares" style="width: 50%;  margin: auto;" aria-hidden="true">
+                        <table  class="pintarPares catPagos" style="width: 50%;  margin: auto;" aria-hidden="true">
                             <tr>
-                                <td><b>CLAVE</b></td>
-                                <td><b>DESCRIPCIÓN</b></td>
+                                <th><b>CLAVE</b></th>
+                                <th><b>DESCRIPCIÓN</b></th>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>EFECTIVO</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>CHEQUE NOMINATIVO</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>TRANSFERENCIA ELECTRÓNICA DE FONDOS</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>TARJETA DE CRÉDITO</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>MONEDERO ELECTRÓNICO</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>DINERO ELECTRÓNICO</td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>VALES DE DESPENSA</td>
-                            </tr>
-                            <tr>
-                                <td>28</td>
-                                <td>TARJETA DE DÉBITO</td>
-                            </tr>
-                            <tr>
-                                <td>29</td>
-                                <td>TARJETA DE SERVICIO</td>
-                            </tr>
-                            <tr>
-                                <td>99</td>
-                                <td>OTROS</td>
-                            </tr>
+                            {{mediosDePagos}}
                         </table>
                     </td>
                 </tr>
