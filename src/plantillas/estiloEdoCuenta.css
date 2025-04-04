@@ -8,6 +8,27 @@ body {
     border: 0.5px solid white; padding: 10px; width: 670px; margin: auto; 
 }
 
+.styleheader {
+    text-align: center; 
+    width: 100%; 
+    padding: 10px; 
+    padding-top: 0px;
+    font-family: "Arial Narrow", Arial, sans-serif;
+}
+
+.headertitulo {
+    font-size: 20px !important;
+}
+
+.headersubTitulo {
+    font-size: 10px !important;
+    font-weight: normal;
+}
+
+.tdImg {
+    width: 280px;
+}
+
 .contenidoCondusef {
     page-break-inside: avoid;
     border: 0.5px solid  white;
@@ -17,18 +38,17 @@ body {
 }
 
 .contenidoFinal {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    font-size: 12px;
     page-break-inside: avoid;
+    border: 0.5px solid  white;
+    padding: 10px; 
+    width: 670px; 
+    margin: auto; 
 }
 
 .titulo {
     color: #333; font-weight: bold;  
     font-size: 13px;
+    margin-left: -12px;
 }
 
 .cuadro {
@@ -83,8 +103,8 @@ p {
 }
 
 .mleft-5 { margin-left: -5px; }
-.mleft-20 { margin-left: 30px; }
-.mleft-28 { margin-left: 38px; }
+.mleft-20 { margin-left: 18px; }
+.mleft-28 { margin-left: 26px; }
 .mtop-4 { margin-top: -4px; }
 .mbot-4 { margin-bottom: -4px; }
 .infoProducto { margin-top: 30px; font-weight: bold; }
@@ -180,6 +200,7 @@ p {
 }
 
 .tdDatos {
+    width: 170px;
     text-align: right;
 }
 
@@ -238,9 +259,19 @@ p {
     padding: 5px;
 }
 
-.caja-relativa-1 {
+.caja-relativa-0 {
     position: relative;  
     top: 0px;       
+    left: -20px;     
+    width: 270px; 
+    border: 0.5px solid white;
+    border-spacing: 0px;
+    border-collapse: collapse; 
+}
+
+.caja-relativa-1 {
+    position: relative;  
+    top: 10px;       
     left: 20px;     
     width: 270px; 
     border: 0.5px solid black;
@@ -250,7 +281,7 @@ p {
 
 .caja-relativa-2 {
     position: relative;  
-    top: -68px;           
+    top: -58px;           
     left: 300px;       
     width: 345px; 
     border: 0.5px solid black;
@@ -260,7 +291,7 @@ p {
 
 .caja-relativa-3 {
     position: relative;  
-    top: -60px;           
+    top: -50px;           
     left: 20px;       
     width: 435px; 
     border: 0.5px solid black;
@@ -270,7 +301,7 @@ p {
 
 .caja-relativa-4 {
     position: relative;  
-    top: -277px;           
+    top: -267px;           
     left: 465px;       
     width: 180px; 
     border-collapse: collapse;
@@ -279,7 +310,7 @@ p {
 
 .caja-relativa-5 {
     position: relative;  
-    top: -127px;           
+    top: -117px;           
     left: 20px;       
     width: 400px; 
     border-collapse: collapse;
@@ -289,7 +320,7 @@ p {
 
 .caja-relativa-6 {
     position: relative;  
-    top: -107px;           
+    top: -97px;           
     left: 20px;       
     width: 620px; 
     border-collapse: collapse;
@@ -299,7 +330,7 @@ p {
 
 .caja-relativa-7 {
     position: relative;  
-    top: 200px;           
+    top: 50px;           
     left: 20px;       
     width: 620px;
     display: flex;
@@ -367,7 +398,8 @@ p {
     text-align: center;
 }
 
-.catPagos th, td {
+.catPagos td,
+.catPagos th {
     padding-left: 5px;
     border-right: 20px solid white;
 }

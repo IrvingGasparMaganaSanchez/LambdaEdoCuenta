@@ -10,6 +10,32 @@
     <div class="contenido">
         <table aria-hidden="true">
             <tr>
+                <td>
+                    <table aria-hidden="true">
+                        <tr>
+                         <td class="tdImg" style="width: 223px;">
+                              <img src="{{{logo}}}" style="width: 210px; height: auto;">
+                         </td>
+                         <td style="width: 223px; text-align: center;">
+                            <table aria-hidden="true">
+                                <tr>
+                                    <td>
+                                        <span class="headertitulo"><b>ESTADO DE CUENTA<b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="headersubTitulo">{{fecha}}</span></span>
+                                    </td>
+                                </tr>
+                            </table>
+                         </td>
+                         <td style="width: 223px;"></td>
+                        </tr>
+                    <table>
+                </td>
+            </tr>
+            <tr>
                 <td class="td10">
                     <table aria-hidden="true">
                         <tr>
@@ -98,36 +124,40 @@
                             <td class="tdValorDatos">$ {{saldoInicial}}</td>
                             <td class="tdDatos">Saldo Insoluto</td>
                             <td class="tdValorDatos">$ {{saldoInsoluto}}</td>
+                            <td style="width: 40px;"></td>
                         </tr>
                         <tr>
                             <td class="tdDatos"><b>Tasa de Interés Ordinaria sin I.V.A. anual</b></td>
                             <td class="tdValorDatos"><b>{{tasaInteresOrdinarioSinIvaAnual}}%</b></td>
                             <td class="tdDatos">Fecha de Apertura</td>
                             <td class="tdValorDatos">{{fechaApertura}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td class="tdDatos"><b>Tasa de Interés Moratoria sin I.V.A. anual</b></td>
                             <td class="tdValorDatos"><b>{{tasaInteresMoratorioSinIvaAnual}}%</b></td>
                             <td class="tdDatos">Fecha de Vencimiento</td>
                             <td class="tdValorDatos">{{fechaVencimiento}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td class="tdDatos">Comisión por apertura con I.V.A</td>
                             <td class="tdValorDatos">$ {{comisionPorAperturaConIva}}</td>
                             <td class="tdDatos">Fecha Límite de Pago</td>
                             <td class="tdValorDatos">{{fechaLimitePago}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td class="tdDatos"><b>C.A.T. Promedio</b></td>
                             <td class="tdValorDatos"><b>{{catPromedio}}% sin I.V.A.</b></td>
                             <td class="tdDatos">Pagos Restantes</td>
-                            <td class="tdValorDatos borde-1">{{pagosRestantes}}</td>
+                            <td colspan="2" class="tdValorDatos borde-1">{{pagosRestantes}}</td>
                         </tr>
                         <tr>
                             <td class="montoDatos"><b>Monto a pagar en el periodo</b></td>
                             <td class="tdValorDatos"><b>$ {{montoPagarEnPeriodo}}</b></td>
                             <td class="tdDatos"></td>
-                            <td class="tdValorDatos borde-2">$ {{saldoRestante}}</td>
+                            <td colspan="2" class="tdValorDatos borde-2">$ {{saldoRestante}}</td>
                         </tr>
                     </table>
                 </td>
@@ -259,6 +289,14 @@
 
     <div class="contenidoCondusef">
 
+        <table class="caja-relativa-0" aria-hidden="true">
+            <tr>
+                <td class="tdImg" style="width: 223px;">
+                    <img src="{{{logo}}}" style="width: 210px; height: auto;">
+                </td>
+            </tr>
+        <table>
+
         <table class="caja-relativa-1" aria-hidden="true">
             <tr class="pfgray-2"><th>CONDUSEF</th></tr>
             <tr>
@@ -355,7 +393,7 @@
                 <td>
                     <table class="pagos" aria-hidden="true">
                         <tr>
-                            <td colspan="2"><b>{{{transferenciaBancoEmisor}}}</b></td>
+                            <td colspan="2"><b>{{transferenciaBancoEmisor}}</b></td>
                             <td></td>
                             <td colspan="2"><b>TRANSFERENCIA</b></td>
                         </tr>

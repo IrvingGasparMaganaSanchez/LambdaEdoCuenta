@@ -12,14 +12,24 @@ import { TEMPLATE_AVISO_PRIVACIDAD, PLANTILLA_EDOCUENTA  } from '../commons/cons
 const generarPDF = async data => {
   let nombreArchivoZip = ''
   try {
-    let templateHtml = await fs.readFile(
-      `${PLANTILLA_EDOCUENTA.PATH}${PLANTILLA_EDOCUENTA.HTML}`,
+    let templateBodyHtml = await fs.readFile(
+      `${PLANTILLA_EDOCUENTA.PATH}${PLANTILLA_EDOCUENTA.HTMLBody}`,
       'utf8'
     )
+
+    let templateFooterHtml = await fs.readFile(
+      `${PLANTILLA_EDOCUENTA.PATH}${PLANTILLA_EDOCUENTA.HTMLFooter}`,
+      'utf8'
+    )
+
+    data.logo = await fs.readFile(`${PLANTILLA_EDOCUENTA.PATH}${PLANTILLA_EDOCUENTA.LOGO}`, 'base64');
+    data.logo = `data:image/png;base64,${data.logo}`
 
     const imagenBase64 = await generarCodigoBarrasBase64(data.codigobarra)
     data.codebar = imagenBase64
     data.avisoPrivacidad = reemplazarValores(TEMPLATE_AVISO_PRIVACIDAD, data);
+
+    //console.log(headerHtml)
 
     let tableMovimientos = createTableHtml(data.movimientos);
     let tableAbonosCapital = createTableHtml(data.abonosCapital);
@@ -29,7 +39,7 @@ const generarPDF = async data => {
     let tableAbreviaturas = createTableHtml(data.abreviaturas);
     let mediosDePagos = createTableHtml(data.mediosDePagos);
 
-    templateHtml = reemplazarValores(templateHtml, 
+    templateBodyHtml = reemplazarValores(templateBodyHtml, 
       { 
         tableMovimientos, 
         tableAbonosCapital, 
@@ -40,16 +50,15 @@ const generarPDF = async data => {
         mediosDePagos
       });
     
-    LOG.info(`codebar: ${data.codebar}`)
+    //LOG.info(`codebar: ${data.codebar}`)
 
-    const template = handlebars.compile(templateHtml)
+    const template = handlebars.compile(templateBodyHtml)
     const finalHtml = template(data)
 
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({ headless: true })
     const page = await browser.newPage()
 
     await page.setContent(finalHtml, { waitUntil: 'domcontentloaded' })
-    await page.waitForSelector('img[alt="Código de Barras"]', { visible: true })
 
     // Agregar CSS externo
     await page.addStyleTag({
@@ -67,11 +76,17 @@ const generarPDF = async data => {
     }
 
     await insertEdoCta([reg])
-
     await page.pdf({
       path: nombreArchivoPdf,
       format: 'A4',
-      printBackground: true
+      printBackground: true,
+      displayHeaderFooter: true,
+      margin: {
+        top: "20px",
+        bottom: "80px"
+      },
+      headerTemplate: '',
+      footerTemplate: templateFooterHtml
     })
 
     await crearZipConPass(nombreArchivoZip, nombreArchivoPdf, data.RFC)
@@ -100,7 +115,6 @@ const createTableHtml= (array, addColumEmpty) => {
     if(addColumEmpty) html += '<td></td>'
     html += '</tr>'
   })
-  console.log(`html Final: ${html}`)
   return html
 }
 

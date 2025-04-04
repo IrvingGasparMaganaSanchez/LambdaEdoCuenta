@@ -16,8 +16,11 @@ export const {
 
 export const PLANTILLA_EDOCUENTA = {
   PATH: './src/plantillas/',
-  HTML: 'edoCuenta.html',
-  CSS: 'estiloEdoCuenta.css'
+  HTMLBody: 'edoCuentaBody.html',
+  HTMLHeader: 'edoCuentaHeader.html',
+  HTMLFooter: 'edoCuentaFooter.html',
+  CSS: 'estiloEdoCuenta.css',
+  LOGO: 'logo.png'
 }
 
 // Env By Organizacion
