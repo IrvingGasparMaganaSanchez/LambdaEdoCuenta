@@ -38,7 +38,6 @@ export const {
   env: { TZ = 'America/Mexico_City' }
 } = process
 
-
 export const TEMPLATE_AVISO_PRIVACIDAD = `{{nombreEmpresa}}, recibe las consultas, reclamaciones o aclaraciones, en su
 Unidad Especializada de Atención a Usuarios, ubicada en {{direccionContacto}} y por correo electrónico ({{emailContacto}}) o teléfono (para la Ciudad de
 México y Zona Metropolitana 5269 5202 y para el interior de la República 01 800 021 0683), asi como en

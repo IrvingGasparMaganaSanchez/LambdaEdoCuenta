@@ -3,7 +3,7 @@ import { createConnection } from '../commons/connection.js'
 import LOG from '../commons/logger.js'
 
 const insertEdoCta = async data => {
-  let res = 0;
+  let res = 0
   try {
     LOG.info('Models: Iniciando el método insertEdoCta')
     LOG.info(`Colección: ${COLLECTION_NAME}`)
@@ -15,7 +15,7 @@ const insertEdoCta = async data => {
   } catch (error) {
     LOG.error('Error Models insertEdoCta')
     LOG.error(error)
-  } 
+  }
   return res
 }
 
