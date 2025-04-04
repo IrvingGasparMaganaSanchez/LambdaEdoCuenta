@@ -109,7 +109,7 @@ const createTableHtml = (array, addColumEmpty) => {
   array.forEach(item => {
     html += '<tr>'
     for (const key in item) {
-      if (item.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(item, key)) {
         html += '<td>'
         html += item[key]
         html += '</td>'

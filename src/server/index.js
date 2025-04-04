@@ -3,7 +3,7 @@ import LOG from '../commons/logger.js'
 exports.handler = (event, context) => {
   try {
     LOG.info('LAMBDA: Iniciando Lambda EtdoCuenta')
-    const { accion, body } = event.accion
+    const { accion, body } = event
     switch (accion) {
       case 'encolar':
         LOG.info('LAMBDA: Iniciando Acción - Encolar')
